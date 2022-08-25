@@ -32,6 +32,7 @@ class IquaSoftenerException(Exception):
 class IquaSoftenerData:
     timestamp: datetime
     model: str
+    software_version: str
     state: IquaSoftenerState
     device_date_time: datetime
     volume_unit: IquaSoftenerVolumeUnit
@@ -63,7 +64,7 @@ class IquaSoftener:
         self._token: Optional[str] = None
         self._token_type: Optional[str] = None
         self._token_expiration_timestamp: Optional[datetime] = None
-
+            
     @property
     def device_serial_number(self) -> str:
         return self._device_serial_number
@@ -98,6 +99,7 @@ class IquaSoftener:
             return IquaSoftenerData(
                 timestamp=datetime.now(),
                 model=f'{data["modelDescription"]["value"]} ({data["modelId"]["value"]})',
+                software_version=data["baseSoftwareVersion"]["value"],
                 state=IquaSoftenerState(data["power"]),
                 device_date_time=datetime.fromisoformat(
                     data["deviceDate"][: len(data["deviceDate"]) - 1]

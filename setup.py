@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="iqua_softener",
-    version="1.0.2",
+    version="1.0.3",
     license="MIT",
     author="Artur Zabroński",
     author_email="artur.zabronski@gmail.com",

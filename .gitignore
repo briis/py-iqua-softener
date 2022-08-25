@@ -10,3 +10,4 @@ build/
 __pycache__
 
 venv/
+py-iqua-softener.code-workspace
